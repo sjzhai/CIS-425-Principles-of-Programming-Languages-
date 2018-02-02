@@ -1,0 +1,5 @@
+Problem 2: Interpreter in SML
+
+- fun interp(NUM(x)) = x
+=   | interp(PLUS(x, y)) = interp(x) + interp(y)
+=   | interp(TIMES(x, y)) = interp(x) * interp(y);

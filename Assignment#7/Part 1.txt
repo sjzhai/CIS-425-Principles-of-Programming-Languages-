@@ -1,0 +1,14 @@
+*Part 1*
+
+- Problem 1.1
+  i. INT;
+  ii. ARROW(INT, BOOL); 
+  iii. ARROW(ARROW(VAR "a", VAR "b"), ARROW(VAR "a", VAR "b"));
+
+- Problem 1.2
+  i. AST_APP(AST_SUCC, AST_APP(AST_PRED, AST_NUM 5));
+  ii. AST_IF(AST_NUM 7, AST_BOOL true, AST_NUM 5);
+  iii. AST_FUN("a", INT, AST_APP(AST_ID "f", AST_APP(AST_ID "a", AST_ID "a")));
+
+- Problem 1.3
+  "see sml file 'typechecker.sml'"

@@ -1,0 +1,7 @@
+Problem 1: Lazy Lists Revisited
+
+a. ones = 1 : ones
+
+b. intList n = n : intList (n+1)
+
+c. takeN n (list) = take n list

@@ -1,0 +1,5 @@
+Problem 3: Trees Revisited
+
+- fun treemap f (LEAF x) = LEAF (f x)
+=   | treemap f ( CONS(x, y)) = CONS (treemap f x, treemap f y)
+=   | treemap f NIL = NIL;

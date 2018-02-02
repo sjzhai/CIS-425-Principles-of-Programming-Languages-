@@ -1,0 +1,7 @@
+1. Mitchell, Exercise 5.5
+Explanation: after defined datatype and operation function “f”, I write a recursive function if one leaf just return leaf, else recursion itself when tree has two leaves which is left and right.
+
+datatype 'a tree = LEAF of 'a | NODE of 'a tree * 'a tree;
+fun f(x : int, y : int) = x + y;
+fun reduce f (LEAF(x)) = x
+  |reduce f (NODE(l, r)) = f(reduce f l, reduce f r);

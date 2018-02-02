@@ -1,0 +1,2 @@
+5. Mitchell, Exercise 6.2
+The type of the sort function: ('a * 'a -> bool) * 'a list -> 'a list. The mean of the sort function is to sort a list l. ('a * 'a -> bool) is a function which output the boolean value, and according to the function and list need to sort as the argument, then the output should be ‘a list. And insert function type: ('a * 'a list) -> 'a list, insert function return list of ‘a list which is same output as sort function.

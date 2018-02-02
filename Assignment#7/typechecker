@@ -1,0 +1,55 @@
+e = x | m | true | false | succ | pred | iszero | if e then e else e | fn x.t => e | e e
+t = alpha | int | bool | t -> t
+interp term -> result
+					fun interp (AST_NUM x) = RES_NUM x
+					  | interp (AST_BOOL x) = RES_BOOL x
+					  | interp (AST_IF (e1, e2, e3)) = val b = interp e1 //b is result
+					  								   let
+					  								 = val (RES_BOOL b) = interp e1
+					  								   in 
+					  								   	   if b 
+					  								   	       then interp e2
+					  								   	   else 
+					  								   	       interp e3
+|-n => n            |-e => result
+|-true => true
+|-false => false    |-e => true   |-e2 => v2         |-e1 => false   |-e3 => v3
+                    |-if e1 then e2 else e3 => v2    |-if e1 then e2 else e3 => v3
+
+datatype term = AST_ID of string
+			  | AST_NUM of int
+			  | AST_Bool of bool
+			  | AST_SUCC
+			  | AST_PRED
+			  | AST_ISZERO
+			  | AST_IF of term * term * term 
+			  | AST_FUN of string * term
+			  | AST_APP of term * term
+
+
+datatype type = Var of string | INT | BOOL | ARROW of byte * type
+
+datatype result = RES_NUM of int                 exception tying_ERROR;
+				| RES_BOOL of bool
+				| RES_PRED
+				| RES_ISZERO
+				| RES_FUM of string * term
+
+
+
+e = x | m | true | false | iszero | pred | succ | if e then e else e | e e | (e) | fun x:t => e | let x:t = e in e
+t ::= alpha | int | bool | t -> t
+
+parser: e=>term typecKer : term -> type
+                interp : term * env -> result
+
+                 |                    |
+                 v                    v
+env |-e1 => (fun x => e3) env|-e2 => v2   env,(x, v2)|-e3 => v3      ("=>" return, "|-" empty env)
+________________________________________________________________
+env |-e1 e2 => v3
+
+
+env |- e1 => v1.    env, (x, v1) |- e2 => v2                   env |- (fn x => e) => ((fn x => e), env)
+_____________________________________________                                           closure
+env let x = e1 in e2 => v2

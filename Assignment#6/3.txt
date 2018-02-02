@@ -1,0 +1,4 @@
+3. Mitchell, Exercise 5.7. 
+(a)Since Union type can combine two different type into a single type, after union type defined, the code is not integrity that we cannot determine if statement is correct or not and the value of 3 cannot assignment to “x.i”, therefore the line code “y = (x.i) + 5;” cannot compile correctly and it will catches by run-time system. The error should be x.i was not initialized value.
+
+(b)In SML language, it will occur the error uncaught exception Bind which is type error and the run-time system will catch the problem. The tag should be “the tag of value x must be int otherwise there should be cause error in line code ‘let val_tag int(m) = x in m + 5 end’, need to determine the procedure run if statement correctly.”

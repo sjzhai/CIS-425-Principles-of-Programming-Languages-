@@ -1,0 +1,27 @@
+7. Mitchell, Exercise 6.6
+ (1)assign a type to the expression and each subexpression:
+  subexpression       Type
+  lambda((+ g g)2)     t0
+        ((+ g g)2)     t1
+         (+ g g)       t2
+          +            t3 = int -> int -> int
+            g          t4
+              g        t4
+                2      int
+ 
+ (2)generate a set of constraints on types:
+    Subexpression(+ g g),           Constraint int -> int -> int = int -> t2
+    Subexpression(+ g g)2,          Constraint t2 = int -> t1
+    Subexpression lambda((+ g g)2), Constraint t0 = int -> t1
+
+ (3)solve constraints by means of unification:
+    int -> int -> int = int -> t2
+    t2 = int -> t1
+    t0 = int -> t1
+    
+    int -> int = t2
+    int -> int = int -> t1
+            t0 = int -> t1
+    t0 = int -> int
+
+The output of the type checker should be type error.

@@ -1,0 +1,4 @@
+4. Mitchell, Exercise 5.8
+(a)fun merge(seq_1, seq_2) = Cons(head(seq_1), fn() => merge(tail(seq_2), seq_1))
+
+(b)fun compose(f, g) = Cons(head(apply(f, g)), fn() => tail(apply(f, g)))

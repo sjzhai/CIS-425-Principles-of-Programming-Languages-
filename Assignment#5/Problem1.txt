@@ -1,0 +1,4 @@
+Problem 1: SML Warm-Up
+
+-fun sumAll [] = 0 
+=  | sumAll (head::tail) = head + sumAll tail;

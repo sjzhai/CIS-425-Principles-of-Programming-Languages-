@@ -1,0 +1,8 @@
+2. Mitchell, Exercise 5.6
+(a)Curry: ((’a ∗ ’b) → ’c)→ (’a → (’b→ ’c))
+   fun Curry f x y = f(x,y);
+
+   UnCurry: (’a → (’b → ’c))→ ((’a ∗ ’b) → ’c)
+   fun Uncurry g(x,y) = g x y;
+
+(b)Since the statements “UnCurry(Curry(f)) = f” and “Curry(UnCurry(g)) = g” can be hold, according to my curry and uncurry function, they are in opposite way. The output of “Curry” is input of “Uncurry”, and the output of “Uncurry” is same as input of “Curry”. Therefore, above two statements can be hold.

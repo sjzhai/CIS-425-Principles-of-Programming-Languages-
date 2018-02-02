@@ -1,0 +1,6 @@
+8. Mitchell, Exercise 6.7
+fun append(nil, l) = l| append(x : : l, m) = append(l, m);
+
+The type of the function is 'a list * 'b -> ‘b. 
+Because the append function is input list a and b, it is append list a into b.
+And the bug is that the function always return the condition “append(x : : l, m) = append(l, m)”, and the function will never return list “l”.

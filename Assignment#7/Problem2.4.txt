@@ -1,0 +1,5 @@
+Part 2
+
+- Problem 2.4
+Briefly discuss what you would change in your interpreters if the input to the interpreter has been type-checked before its invocation.
+If the input to interpreter has been type-checked before its invocation, I would change the dynamic scoping to static scoping which means the input variable already invoked. And in sml code, I need to change the datatype to mutually recursive datatype by adding the closure. Also, I need to change the content of app.

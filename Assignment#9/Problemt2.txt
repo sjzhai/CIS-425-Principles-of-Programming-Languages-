@@ -1,0 +1,28 @@
+Problem 2: Stream Equations
+
+a. evens = 0 : map (+2) evens
+   odds = 1 : map (+2) odds
+
+b. merge x [] = x
+   merge [] y = y
+   merge [] [] = []
+   merge (x:xs) (y:ys) = concatMap (\(x,y) -> [x,y]) (zip (x:xs) (y:ys))
+
+   The call "merge evens odds" can be terminated. Because as we defined in part a, the function evens and odds are both return the list of all even numbers and the list of all odd numbers, when function merge implement those two functions, two lists can be merged.
+
+   The call "length (merge evens odds)" cannot be terminated. Because both evens and odds are return the infinite list. If merge two infinite list, the result should be infinite list which the infinite list has no specific length.
+
+c.    evens = 0 : map (+2) evens
+	  odds = 1 : map (+2) odds
+      merge (x:xs) (y:ys) = concatMap (\(x,y) -> [x,y]) (zip (x:xs) (y:ys))
+      (*since we already define function evens, odds and merge*)
+
+   i. let cube x = x * x * x
+      map cube (merge evens odds)
+
+  ii. timeThree = 1 : map (*3) timeThree
+
+ iii. let square x = x * x
+ 	  merge (merge evens odds) (map square (merge evens odds))
+
+  iv. drop 1 (map negate (merge evens odds))
