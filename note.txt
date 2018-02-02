@@ -1,0 +1,45 @@
+Open SMLofNJ.Cont;
+
+Let val b = 1 + 2;
+    Val v = callcc (fn cont => throw cont (2+5));
+     In b + v + 3
+End;
+
+Let val b = 1 + 2;
+    Val v = callcc (fn cont => 0);
+     In b + v + 3
+End;
+
+8 + callcc (fn k => ((throw k 5) div 4));
+
+(8 + callcc (fn k => ((throw k 5) div 4))) * 2;
+
+(let val u = 3+2; in callcc (fn k => (throw k u) div 4) end) + 8 * 3;
+
+(callcc (fn k => fn x => throw k (fn y => x))) 1965;
+- k -> fn x => x 1965
+- (fn x => throw k (fn y => x)) 1965
+- throw k (fn y => 1965)
+- (fn y => 1965) 1965
+
+————————————————————————————————————————
+Val globalk : (int cont option) ref = ref NONE;
+
+(callcc (fn k => (globalk := SOME k; print (“I am here\n”); 5))) + 8;
+
+let
+   Val SOME k = !glovalk;
+in
+   throw k 1
+end;
+
+let
+   val globalk : (int cont option) ref = ref NONE;
+   val res = (callcc (fn k => (glovalk := SOMW k; print (“I am here\n”); 5 ))) + 8;
+in let
+      val SOME k = !globalk;
+    in 
+      throw k 1
+   end
+end;
+

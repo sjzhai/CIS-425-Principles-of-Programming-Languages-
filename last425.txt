@@ -1,0 +1,105 @@
+var x = 0;
+function inc(2){x = x + 2;}
+inc(2);
+inc(3);
+inc(4);
+x
+function inc(x,z){return x + z;}
+x1 = inc(0, 2);
+x2 = inc(x1, 3);
+x3 = inc(x2, 4);
+
+
+(function (state) {
+	x1 = inc(state, 2);
+	x2 = inc(x1, 3);
+	x3 = inc(x2, 4);
+	return x3;
+}) 0
+
+main :: IO ()
+main = do putStrLn "Hello!"
+		  let xs = 1:2:3:[]
+		  line <- getLine
+		  putStrLn line
+
+
+return 5 :: IO Int
+putStrLn :: String -> IO ()
+getLine :: IO String
+
+data StateM a = StateM (Integer -> (a, Integer))
+double :: StateM Integer
+double = StateM (\st -> (st * 2, st * 2))
+
+quad = do x <- double     quad = double >>= \x -> double
+           double
+
+data DEq = DEq {(==) :: a -> a -> Bool;
+				(/=) :: a -> a -> Bool}
+
+
+class Eq a where
+	(==) :: a -> a -> Bool
+	(/=) :: a -> a -> Bool
+
+elem :: DEq a -> a -> [a] -> Bool
+elem :: Eq a => a -> [a] -> Bool
+elem x (y : ys) = if x == y then True else elem x ys
+elem _ [] = False
+
+instance Eq Bool where
+	True == True = True
+	False == False = True
+	_ == _ = False
+	a /= b = not (a == b)
+
+elem d x (y : ys) = if ((==) d) x y then True else elem x ys
+
+interface Eq <A> {
+	bool equals (A x, A y);
+	bool notEquals (A x, A y);
+}
+
+bool elem (Eq <A> d, A x, List <A> xs) {
+	for (A : y : xs) {
+		if (d equals (x) s) return true;
+	}
+	return false;
+}
+
+instance (Eq a, Eq b)=> Eq (a, b) where
+	(a1, b1) == (c2, b2) = a1 == a2 &&
+						   b1 == b2
+
+x == y = case x of (a1, b1) -> case y of (a2, b2) -> ...
+
+-------------------------------
+CBV / dynamic     --call by value
+result = ... |RES_FUN of string * term| ...
+env = (string * result) list
+
+CBV / static
+result = ... |RES_FUN of String * term * env| ...
+APP/FUN => let a = interp env term 
+		    in interp (extend x a env) e
+		   end
+VAR => lookup x env
+
+CBN / dynamic     --call by name 
+env = (string * term) list
+
+CBN / static
+env = (string * term * env) list
+APP/FUN => interp (extend x term env) e
+VAR => interp (lookup x env) env
+
+
+
+
+
+
+
+
+
+
